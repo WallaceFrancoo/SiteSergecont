@@ -28,15 +28,19 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
+
+
 }
 body {
     line-height: 1;
     font-family: 'Space Grotesk', sans-serif;
     min-height: 100vh;
-    background: linear-gradient(#041833,#04244F,#154580);
+    margin-top: 120px;
+    background: linear-gradient(180deg, #ffffff, #f8f8f8, #f1eee9);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    padding-bottom: 70px;
 }
 ol, ul {
     list-style: none;
@@ -54,6 +58,66 @@ table {
     border-spacing: 0;
 }
 
+/* Barra superior fixa e centralizada */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #cc0000;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    padding: 6px 0;
+    z-index: 9999; /* força a ficar por cima de tudo */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.topbar__conteudo {
+    display: inline-block;
+}
+.topbar__link {
+    color: #fff;                /* texto branco */
+    text-decoration: none;      /* remove o sublinhado */
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.topbar__link:hover {
+    opacity: 0.8;               /* leve efeito ao passar o mouse */
+}
+
+.rodape {
+    position: fixed;
+    bottom: 0;                /* fixa no final da tela */
+    left: 0;
+    width: 100%;
+    background-color: #cc0000; /* azul escuro */
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.3);
+}
+
+/* Ícones alinhados e espaçados */
+.rodape__icones {
+    display: flex;
+    gap: 15px;
+}
+
+/* Texto centralizado verticalmente */
+.rodape__texto {
+    font-size: 1rem;
+}
+
+.main-content {
+flex: 1; /* ocupa todo o espaço disponível, empurrando o rodapé para baixo */
+}
 .banner {
     width: auto;
     position: relative;
@@ -78,13 +142,109 @@ table {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin: 1.5rem 0 4rem 0;
+    background-color: #ffffff; /* ou a cor que preferir */
+    position: fixed; /* fixa no topo */
+    top: 0; /* gruda no topo */
+    left: 0;
+    width: 100%; /* ocupa toda a largura */
+    padding: 1.5rem 3rem;
+    box-sizing: border-box;
+    z-index: 9998; /* fica abaixo do topbar (que tem 9999) */
+    border-bottom: 2px solid #ff0000; /* opcional: linha vermelha separando */
 }
 
+.bloco-azul {
+  position: relative;
+  background: linear-gradient(135deg, #002e5d, #004a8d);
+  color: #fff;
+  padding: 120px 20px 200px 20px;
+  overflow: hidden;
+}
+
+/* conteúdo centralizado */
+.bloco-azul .conteudo {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* curva diagonal inferior */
+.bloco-azul .curva {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: #fff;
+  clip-path: polygon(0 60%, 100% 100%, 100% 100%, 0 100%);
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+  .bloco-azul {
+    padding: 80px 20px 150px 20px;
+  }
+  .bloco-azul .conteudo {
+    font-size: 1rem;
+  }
+  .bloco-azul .curva {
+    height: 150px;
+    clip-path: polygon(0 65%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+
+/* ABAIXO OS BOTOES DO CABECALHO */
+.cabecalho__navegacao {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 5px; /* espaço entre os botões */
+}
+
+.cabecalho__link {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* espaço entre o ícone e o texto */
+    text-decoration: none;
+    color: #ff0000;  /* texto vermelho*/
+    font-size: 1rem;
+    font-weight: 500;
+    background: transparent; /* fundo transparente */
+    border: none; /* remove qualquer borda */
+    padding: 5px 10px; /* espaçamento interno opcional */
+    border-radius: 6px; /* leve arredondamento opcional */
+    transition: color 0.3s ease, transform 0.2s ease, background 0.3s ease;
+}
+
+.cabecalho__link img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0); /* ícone preto (sem cor) */
+    transition: filter 0.3s ease;
+}
+
+/* Ao passar o mouse */
+.cabecalho__link:hover {
+    color: #ff0000; /* texto vermelho */
+    transform: scale(1.15); /* leve aumento */
+    background: transparent; /* garante que continue transparente no hover */
+    font-weight: 700; /* deixa o texto em negrito */
+}
+
+.cabecalho__link:hover img {
+    /* Ícone vermelho */
+    filter: brightness(0) saturate(100%) invert(16%) sepia(93%) saturate(7460%) hue-rotate(1deg) brightness(92%) contrast(121%);
+}
+
+/* FIM DOS BOTOES DO CABECALHO */
+
+/* INICIO DO BOTAO DE PESQUISAR */
 .cabecalho__busca {
     align-items: center;
     border-radius: 10px;
-    background: linear-gradient(45deg, #C98CF1,#7B78E5);
+    background: linear-gradient(45deg, #ff1a1a, #b30000);
     display: flex;
     height: auto;
     justify-content: space-between;
@@ -93,30 +253,56 @@ table {
 }
 
 .busca__fundo {
-    align-items: center;
-    background-color: #041A37;
-    border-radius: 8px;
     display: flex;
+    align-items: center;          /* centraliza verticalmente */
+    justify-content: flex-start;  /* deixa o ícone e o campo lado a lado */
+    background: linear-gradient(180deg, #ffffff, #f8f8f8, #f1eee9);
+    border-radius: 8px;
+    padding: 5px 10px;            /* espaço interno pra respirar */
     margin: 0 auto;
+    width: 100%;
+    max-width: 550px;             /* opcional: limita o tamanho da barra */
+}
+
+.busca__fundo img {
+    width: 35px;                  /* tamanho do ícone */
+    height: 35px;
+    margin-right: 2px;            /* espaço entre o ícone e o input */
+}
+
+.busca__fundo form {
+    display: flex;
+    align-items: center;
     width: 100%;
 }
 
 .busca__input {
-    align-items: center;
+    flex: 1;
     background-color: transparent;
     border: none;
+    color: black;
     font-size: 1rem;
     height: 24px;
-    padding: 10px;
-    width: 500px;
+    padding: 10px 0;
+    outline: none;
 }
 
 .busca__icone {
-    cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+    width: 20px;
+    height: 20px;
 }
 
+.busca__fundo button {
+    background: transparent; /* remove o fundo branco */
+    border: none;            /* remove a borda */
+    padding: 5px;            /* ajusta o tamanho */
+    cursor: pointer;         /* mostra a mãozinha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FINAL DO BOTAO DE PESQUISAR */
 .cards {
     width: 100%;
 }
@@ -275,9 +461,9 @@ table {
 }
 
 .pagina-inicial {
+    margin: 5px auto 0 auto;
     max-width: 1440px;
     padding: 1.5rem;
-    margin: 0 auto;
 }
 
 .populares {
@@ -332,25 +518,6 @@ table {
     justify-content: space-between;
 }
 
-.rodape {
-    background-color: #04244F;
-    width: 100%;
-    padding: 1.5rem 3rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    color: #FFFFFF;
-}
-
-.rodape__icones {
-    width: 80px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.rodape__texto {
-    font-size: 1.1rem;
-}
 
 .tags {
     padding: 1.5rem 0;
@@ -382,3 +549,4 @@ table {
     border: 2px solid #7B78E5;
     cursor: pointer;
 }
+

@@ -1,3 +1,21 @@
 from django.contrib import admin
+from galeria.models import Empresas, Programas
 
-# Register your models here.
+class ListandoEmpresas(admin.ModelAdmin):
+    list_display = ('nome', 'cnpj', 'numero','ativo') 
+    list_display_links = ('nome','numero')
+    search_fields = ('numero','cnpj','nome')
+    list_editable = ('ativo',)
+    list_filter = ('ativo',)
+
+class ListandoProgramas(admin.ModelAdmin):
+    list_display = ('nome', 'info','ativo') 
+    list_display_links = ('nome',)
+    search_fields = ('nome','ativo')
+    list_editable = ('ativo',)
+    list_filter = ('ativo',)
+# O correto:
+admin.site.register(Empresas, ListandoEmpresas)
+admin.site.register(Programas, ListandoProgramas)
+
+  

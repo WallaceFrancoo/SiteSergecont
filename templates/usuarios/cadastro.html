@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alura Space - Cadastro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/styleCadastro.css' %}">
+</head>
+
+<body>
+    <div class="stars"></div>
+    
+    <div class="register-container">
+        <div class="register-box">
+            <div class="logo">
+                <h1>SERGECONT CONTABILIDADE</h1>
+            </div>
+            
+            <div class="subtitle">
+                Criar Nova Conta
+            </div>
+            
+            <form action="{% url 'cadastro' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group full-width">
+                    <label for="nome_cadastro">Nome Completo</label>
+                    <input type="text" class="form-control" name="nome_cadastro" id="nome_cadastro" 
+                           placeholder="Digite seu nome completo" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" name="email" id="email" 
+                           placeholder="Digite seu e-mail" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password1">Senha</label>
+                        <input type="password" class="form-control" name="password1" id="password1" 
+                               placeholder="Digite sua senha" autocomplete="new-password"  required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password2">Confirmar Senha</label>
+                        <input type="password" class="form-control" name="password2" id="password2" 
+                               placeholder="Confirme sua senha" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-register">
+                    Criar Conta
+                </button>
+            </form>
+            
+            <div class="back-link">
+                <a href="{% url 'login' %}">← Já tenho uma conta</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gerar estrelas aleatórias
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const numberOfStars = 100;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        createStars();
+
+        // Validação de senha em tempo real
+        const password1 = document.getElementById('password1');
+        const password2 = document.getElementById('password2');
+
+        password2.addEventListener('input', function() {
+            if (password1.value !== password2.value) {
+                password2.style.borderColor = '#ff4444';
+                password2.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.4)';
+            } else {
+                password2.style.borderColor = '#44ff44';
+                password2.style.boxShadow = '0 0 15px rgba(68, 255, 68, 0.4)';
+            }
+        });
+    </script>
+</body>
+
+</html>

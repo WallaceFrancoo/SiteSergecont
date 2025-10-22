@@ -1,20 +1,42 @@
 {% load static %}
 <div class="pagina-inicial">
     <header class="cabecalho">
-        <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
-        <div class="cabecalho__busca">
-            <div class="busca__fundo">
-                <input class="busca__input" type="text" placeholder="O que você procura?">
-                <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" alt="ícone de search">
-            </div>
+        <img src="{% static '/assets/logo/Logo.png' %}" alt="Logo da Sergecont" />
+        
+        <!-- Menu horizontal no cabeçalho -->
+        <nav class="cabecalho__navegacao">
+
+            <a href="{% url 'index' %}" class="cabecalho__link">
+                <span>Home</span>
+            </a>
+
+            <a href="{% url 'AbaAplicativos' %}" class="cabecalho__link">
+                <span>Aplicativos</span>
+            </a>
+
+            <a href="{% url 'index' %}" class="cabecalho__link">
+                <span>Imposto de Renda</span>
+            </a>
+
+            <a href="{% url 'FaleConosco' %}" class="cabecalho__link">
+                <span>Fale Conosco</span>
+            </a>
+
+            <a href="{% url 'login' %}" class="cabecalho__link">
+                <span>Área do Cliente</span>
+            </a>
+
+            
+        </nav>
+        
+        <div class="cabecalho__busca"> 
+            <div class="busca__fundo"> 
+                <form action="{% url 'buscar' %}"> 
+                    <input class="busca__input" type="text" name="buscar" placeholder="O que você procura?"> 
+                    <button type="submit"> 
+                        <img class="busca__icone" src="{% static '/assets/ícones/1x/Pesquisa3.png' %}" alt="ícone de search"> 
+                    </button> 
+                </form> 
+            </div> 
         </div>
     </header>
-    <main class="principal">
-        <section class="menu-lateral">
-            <nav class="menu-lateral__navegacao">
-                <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
-                <a href="#"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
-                <a href="#"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
-                <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
-            </nav>
-        </section>
