@@ -70,6 +70,7 @@
             border-radius: 15px;
             z-index: -1;
             animation: borderGlow 3s linear infinite;
+            opacity: 0.45;
         }
 
         @keyframes borderGlow {
@@ -86,7 +87,17 @@
             font-family: 'Orbitron', monospace;
             font-size: 2.5rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #00ffff, #0080ff);
+            background: black;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .logo h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 900;
+            background: rgb(0, 0, 0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
@@ -101,7 +112,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: #00ffff;
+            color: black;
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -174,7 +185,7 @@
         }
 
         .back-link a {
-            color: #00ffff;
+            color: black;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;

@@ -6,3 +6,6 @@ def login(request):
 
 def cadastro(request):
     return render(request, 'usuarios/cadastro.html')
+
+def inicio(request):
+    return render(request, 'usuarios/inicio.html')

@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fundo com estrelas */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+.star:nth-child(odd) {
+    animation-delay: 1s;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Container central */
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+}
+
+/* Caixa de boas-vindas */
+.welcome-box {
+    background: rgba(15, 15, 35, 0.9);
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    padding: 50px 40px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #ff0080);
+    border-radius: 15px;
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+    opacity: 0.45;
+}
+
+@keyframes borderGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Título e subtítulo */
+.titulo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: #b3ffff;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Campo de nome */
+.input-nome {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #333;
+    color: #fff;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.input-nome:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.input-nome::placeholder {
+    color: #777;
+}
+
+/* Botão */
+.btn-continuar {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: linear-gradient(45deg, #00ffff, #0080ff);
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Orbitron', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-continuar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+}
+
+.btn-continuar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-continuar:hover::before {
+    left: 100%;
+}
+
+@media (max-width: 480px) {
+    .welcome-box {
+        width: 90%;
+        padding: 35px 20px;
+    }
+    .titulo {
+        font-size: 1.5rem;
+    }
+}

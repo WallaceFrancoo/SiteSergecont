@@ -22,6 +22,9 @@
         <div class="login-box">
             <div class="logo">
                 <h1>SERGECONT</h1>
+                {% if request.GET.nome %}
+                <h3>Seja bem-vindo {{ request.GET.nome }}</h3>
+                {% endif %}
             </div>
             
             <form action="{% url 'login' %}" method="POST">
@@ -35,7 +38,7 @@
                 <div class="form-group">
                     <label for="password">Senha</label>
                     <input type="password" class="form-control" name="password" id="password" 
-                           placeholder="Digite sua senha" required>
+                           placeholder="Digite sua senha" autocomplete="new-password" required>
                 </div>
                 
                 <button type="submit" class="btn-login">
@@ -44,12 +47,13 @@
             </form>
             
             <div class="back-link">
+                {% if request.GET.nome %}
+                <a href="{% url 'cadastro' %}?nome={{ request.GET.nome }}">Não tem uma conta? Cadastre-se</a><br>
+                {% else %}
                 <a href="{% url 'cadastro' %}">Não tem uma conta? Cadastre-se</a><br>
-
-
-
+                {% endif %}
                 <a href="{% url 'index' %}">← Voltar ao Início</a>
-            </div>
+</div>
         </div>
     </div>
 
