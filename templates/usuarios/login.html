@@ -29,22 +29,18 @@
             
             <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
+
+                {% for field in form.visible_fields %}
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" class="form-control" name="email" id="email" 
-                           placeholder="Digite seu e-mail" required>
+                    <label for="{{ field.id_for_label }}" >{{ field.label }}</label>
+                {{ field }}
                 </div>
-                
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" class="form-control" name="password" id="password" 
-                           placeholder="Digite sua senha" autocomplete="new-password" required>
-                </div>
-                
+                {% endfor %}
+
                 <button type="submit" class="btn-login">
                     Acessar Sistema
                 </button>
-            </form>
+</form>
             
             <div class="back-link">
                 {% if request.GET.nome %}
