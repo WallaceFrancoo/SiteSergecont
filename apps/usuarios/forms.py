@@ -17,10 +17,15 @@ class CadastroForm(forms.Form):
             'class': 'form-control',
             'placeholder': 'Digite seu nome'
         }))
-    cnpj = forms.CharField(max_length=18, label='CNPJ', required=True, widget=forms.TextInput(attrs={
-            'class': 'form-control',
+    cnpj = forms.CharField(
+        max_length=18,
+        label='CNPJ',
+        required=False,  # <── deixa de ser obrigatório
+        widget=forms.TextInput(attrs={
+            'class': 'form-control d-none',  # opcional: oculta no front
             'placeholder': 'Digite seu CNPJ'
-        }))
+        })
+    )
     email = forms.EmailField(label='E-mail', required=True, widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'Digite seu e-mail'

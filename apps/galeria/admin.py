@@ -1,5 +1,5 @@
 from django.contrib import admin
-from galeria.models import Empresas, Programas
+from apps.galeria.models import Empresas, Programas
 
 class ListandoEmpresas(admin.ModelAdmin):
     list_display = ('nome', 'cnpj', 'numero','ativo') 

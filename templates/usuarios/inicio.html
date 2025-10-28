@@ -20,12 +20,16 @@
     <div class="welcome-container">
         <div class="welcome-box">
             <h1 class="titulo">Bem-vindo à Área do Cliente</h1>
-            <p class="subtitulo">Como posso te chamar?</p>
+            <p class="subtitulo">Você já é nosso cliente?</p>
 
-            <form action="{% url 'login' %}" method="get" class="nome-form">
-                <input type="text" name="nome" id="nome" class="input-nome" placeholder="Digite seu nome..." required>
-                <button type="submit" class="btn-continuar">Continuar</button>
-            </form>
+            <div class="opcoes-cliente">
+                <form action="{% url 'Clientes' %}" method="get">
+                    <button type="submit" class="btn-opcao btn-sim">Sim</button>
+                </form>
+                <form action="{% url 'FaleConosco' %}" method="get">
+                    <button type="submit" class="btn-opcao btn-nao">Não</button>
+                </form>
+            </div>
         </div>
     </div>
 

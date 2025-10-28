@@ -32,6 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,8 +42,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'galeria.apps.GaleriaConfig',
-    'usuarios.apps.UsuariosConfig',
+    'apps.galeria.apps.GaleriaConfig',
+    'apps.usuarios.apps.UsuariosConfig',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.slack',
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
 ]
 
 MIDDLEWARE = [
@@ -53,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'setup.urls'
@@ -143,3 +159,20 @@ LOGOS_URL = '/logos/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'slack': {
+        'APP': {
+            'client_id': str(os.getenv('CLIENTE_SLACK')),
+            'secret': str(os.getenv('KEY_SLACK')),
+            'key': ''
+        },
+        'SCOPE': ['identity.basic', 'identity.email', 'identity.team', 'identity.avatar'],
+    },
+}
+
+LOGIN_REDIRECT_URL = '/clientes/areadocliente/'  # Melhor apontar para uma URL nomeada, não para um template
+ACCOUNT_LOGOUT_ON_GET = True
+LOGOUT_REDIRECT_URL = '/'
+SITE_ID = 1

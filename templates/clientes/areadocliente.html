@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static '/styles/styleLogin.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/styleAreadocliente.css' %}">
 </head>
 
 <body>
@@ -22,31 +22,11 @@
         <div class="login-box">
             <div class="logo">
                 <h1>SERGECONT</h1>
-                {% if request.GET.nome %}
-                <h3>Seja bem-vindo {{ request.GET.nome }}</h3>
-                {% endif %}
+                <h3>Seja bem-vindo </h3>
+            <div class='logout-btn-container'>
+                <a href="http://localhost:8000/accounts/logout/" class="btn-login">
+                    Logout
             </div>
-            
-            <form action="{% url 'login' %}" method="POST">
-                {% csrf_token %}
-
-                {% for field in form.visible_fields %}
-                <div class="form-group">
-                    <label for="{{ field.id_for_label }}" >{{ field.label }}</label>
-                {{ field }}
-                </div>
-                {% endfor %}
-
-                <button type="submit" class="btn-login">
-                    Acessar Sistema
-                </button>
-</form>
-            
-            <div class="back-link">
-                <a href="{% url 'cadastro' %}">Não tem uma conta? Cadastre-se</a><br>
-                <a href="{% url 'index' %}">← Voltar ao Início</a>
-</div>
-        </div>
     </div>
 
     <script>

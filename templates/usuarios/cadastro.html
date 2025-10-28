@@ -28,20 +28,33 @@
             </div>
             
             <form action="{% url 'cadastro' %}" method="POST">
-                {% csrf_token %}
-                
-                {% for field in form.visible_fields %}
-                <div class="form-group">
-                    <label for="{{ field.id_for_label }}" >{{ field.label }}</label>
-                {{ field }}
-                </div>
-                {% endfor %}
-                
-                <button type="submit" class="btn-register">
-                    Criar Conta
-                </button>
-            </form>
+            {% csrf_token %}
             
+            <div class="form-group">
+                <label for="{{ form.nome.id_for_label }}">Nome</label>
+                {{ form.nome }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">E-mail</label>
+                {{ form.email }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senha.id_for_label }}">Senha</label>
+                {{ form.senha }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.confirmar_senha.id_for_label }}">Confirmar Senha</label>
+                {{ form.confirmar_senha }}
+            </div>
+
+            <button type="submit" class="btn-register">
+                Criar Conta
+            </button>
+        </form>
+                
             <div class="back-link">
                 {% if request.GET.nome %}
                 <a href="{% url 'login' %}?nome={{ request.GET.nome }}">← Já tenho uma conta</a>

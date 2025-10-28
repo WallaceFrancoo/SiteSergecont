@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from galeria.models import Empresas, Programas
+from apps.galeria.models import Empresas, Programas
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     programas = Programas.objects.order_by('-dataCriacao').filter(ativo=True)
@@ -29,3 +30,7 @@ def buscar(request):
 
 def FaleConosco(request):
     return render(request, 'galeria/FaleConosco.html')
+
+@login_required
+def Clientes(request):
+    return render(request, 'clientes/areadocliente.html')
